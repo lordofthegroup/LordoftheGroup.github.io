@@ -1,7 +1,147 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Matrix Rain</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: black;
+        }
+        
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Optional: Add a content container that doesn't interfere with the background */
+        .content {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            padding: 20px;
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <canvas id="matrix"></canvas>
+    
+    <script>
+        // Initialize the canvas
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas to full window size
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Define characters for the Matrix rain
+        // Mix of katakana, numbers, and special characters for authenticity
+        const katakana = "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ";
+        const latin = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const nums = "0123456789";
+        const symbols = "∈∏∑∆∇∂∝∞≠≡±×÷π√∫∮∴∵∶∷";
+        const chars = katakana + latin + nums + symbols;
+
+        // Rain drop class for better organization and state management
+        class RainDrop {
+            constructor(x, canvasHeight) {
+                this.x = x;
+                this.y = Math.random() * -100; // Start above the screen
+                this.speed = 1.5 + Math.random() * 2; // Varying speeds
+                this.length = 20 + Math.floor(Math.random() * 30); // Varying lengths
+                this.characters = [];
+                this.opacity = 1;
+                this.canvasHeight = canvasHeight;
+                
+                // Initialize characters in this drop
+                for (let i = 0; i < this.length; i++) {
+                    this.characters.push({
+                        char: chars[Math.floor(Math.random() * chars.length)],
+                        brightness: i === 0 ? 1 : 0.1 + (i / this.length) * 0.4
+                    });
+                }
+            }
+
+            update() {
+                // Move the drop down
+                this.y += this.speed;
+
+                // Change characters randomly
+                if (Math.random() < 0.05) {
+                    const randomIndex = Math.floor(Math.random() * this.length);
+                    this.characters[randomIndex].char = chars[Math.floor(Math.random() * chars.length)];
+                }
+
+                // Reset if it's gone too far
+                if (this.y > this.canvasHeight + 100) {
+                    this.y = Math.random() * -100;
+                    this.opacity = 1;
+                }
+            }
+
+            draw(ctx, fontSize) {
+                ctx.font = `${fontSize}px monospace`;
+                
+                // Draw each character in the drop
+                for (let i = 0; i < this.length; i++) {
+                    const char = this.characters[i];
+                    const y = this.y - (i * fontSize);
+                    
+                    // Skip if character is above screen
+                    if (y < 0) continue;
+                    
+                    // Calculate color based on position and brightness
+                    const brightness = char.brightness;
+                    ctx.fillStyle = `rgba(0, 255, 70, ${brightness * this.opacity})`;
+                    
+                    // Add glow effect for the first character
+                    if (i === 0) {
+                        ctx.shadowColor = 'rgba(0, 255, 70, 0.8)';
+                        ctx.shadowBlur = 10;
+                    } else {
+                        ctx.shadowBlur = 0;
+                    }
+
+                    ctx.fillText(char.char, this.x, y);
+                }
+            }
+        }
+
+        // Initialize rain drops
+        const fontSize = 20;
+        const columns = Math.floor(canvas.width / fontSize);
+        const rainDrops = [];
+
+        for (let i = 0; i < columns; i++) {
+            rainDrops.push(new RainDrop(i * fontSize, canvas.height));
+        }
+
+        // Animation loop
+        function animate() {
+            // Create a semi-transparent black rectangle for trail effect
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Update and draw all rain drops
+            rainDrops.forEach(drop => {
+                drop.update();
+                drop.draw(ctx, fontSize);
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        // Start the animation
+        animate();
+    </script>
 </body>
 </html>
