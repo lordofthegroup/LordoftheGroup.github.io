@@ -1,5 +1,5 @@
 var symbol;
-var symbolSize = 24;
+var symbolSize = 15;
 var streams = [];
 
 function setup() {
