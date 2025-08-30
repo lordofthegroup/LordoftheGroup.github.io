@@ -1,0 +1,57 @@
+<!-- filepath: /Users/janelbailey/Documents/GitHub/lordofthegroup/LordoftheGroup/blog.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Blog - Lord of the Group</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
+    <script src="sketch.js"></script>
+    <style>
+        body { margin: 0; overflow: auto; }
+        canvas {
+            position: fixed !important;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .navbar {
+            position: fixed;
+            top: 10vh;
+            left: 0;
+            width: 100%;
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            z-index: 10;
+            padding: 10px 0;
+        }
+        .nav-btn {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 30px;
+            font-size: 1em;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .content {
+            background: transparent;
+            color: white;
+            font-size: 2em;
+            padding: 50px;
+            z-index: 1;
+            position: relative;
+        }
+    </style>
+  </head>
+  <body style="margin:0; overflow:hidden;">
+    <script src="navbar.js"></script>
+    <div class="content">
+      这里是博客页面内容
+    </div>
+  </body>
+</html>

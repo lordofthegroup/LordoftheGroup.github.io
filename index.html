@@ -15,6 +15,29 @@
         z-index: -1;
         pointer-events: none;
       }
+      .navbar {
+        position: fixed;
+        top: 10vh;
+        left: 0;
+        width: 100%;
+        background: transparent;
+        display: flex;
+        justify-content: center;
+        z-index: 10;
+        padding: 10px 0;
+      }
+      .nav-btn {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 30px;
+        font-size: 1em;
+        padding: 8px 16px;
+        border-radius: 4px;
+        transition: background 0.2s;
+      }
+      .nav-btn:hover {
+        background: rgba(255,255,255,0.2);
+      }
       .content {
         position: relative;
         z-index: 1;
@@ -25,6 +48,15 @@
     </style>
   </head>
   <body style="margin: 0; overflow: hidden;">
-    
+    <nav class="navbar">
+      <a href="index.html" class="nav-btn">主页</a>
+      <a href="research.html" class="nav-btn">研究</a>
+      <a href="blog.html" class="nav-btn">博客</a>
+      <a href="contact.html" class="nav-btn">联系</a>
+
+    </nav>
+    <div class="content">
+      我的其他内容
+    </div>
   </body>
 </html>

@@ -1,0 +1,10 @@
+// filepath: /Users/janelbailey/Documents/GitHub/lordofthegroup/LordoftheGroup/navbar.js
+document.write(`
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-btn">主页</a>
+    <a href="research.html" class="nav-btn">研究</a>
+    <a href="blog.html" class="nav-btn">博客</a>
+    <a href="contact.html" class="nav-btn">联系</a>
+  </nav>
+`);
