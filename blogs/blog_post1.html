@@ -17,51 +17,7 @@
     }
     });
     </script>
-    <style>
-    body { margin: 0; overflow: auto; }
-    canvas {
-        position: fixed !important;
-        left: 0;
-        top: 0;
-        z-index: -1;
-        pointer-events: none;
-    }
-    .content {
-        background: white;           /* 白色背景 */
-        color: #222;                 /* 深色字体 */
-        font-size: 1.2em;            /* 合适字体大小 */
-        padding: 40px 40px 40px 40px;/* 内边距 */
-        border-radius: 16px;         /* 圆角 */
-        box-shadow: 0 4px 24px rgba(0,0,0,0.12); /* 阴影 */
-        max-width: 800px;            /* 最大宽度 */
-        margin: 25vh auto 0 auto;    /* 距离导航栏下方，居中显示 */
-        z-index: 1;
-        position: relative;
-    }
-    .navbar {
-        position: fixed;
-        top: 10vh;
-        left: 0;
-        width: 100%;
-        background: transparent;
-        display: flex;
-        justify-content: center;
-        z-index: 10;
-        padding: 10px 0;
-    }
-    .nav-btn {
-        color: #fff;
-        text-decoration: none;
-        margin: 0 30px;
-        font-size: 1em;
-        padding: 8px 16px;
-        border-radius: 4px;
-        transition: background 0.2s;
-    }
-    .nav-btn:hover {
-        background: rgba(255,255,255,0.2);
-    }
-  </style>
+    <link rel="stylesheet" href="../style.css">
   </head>
   <body style="margin:0; overflow:hidden;">
     <script src="../navbar.js"></script>

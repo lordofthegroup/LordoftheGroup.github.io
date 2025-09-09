@@ -4,59 +4,16 @@
   <head>
     <meta charset="UTF-8">
     <title>Lord of the Group</title>
+    <link rel="stylesheet" href="../style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
     <script src="sketch.js"></script>
-    <style>
-      body { margin: 0; overflow: auto; }
-      canvas {
-        position: fixed !important;
-        left: 0;
-        top: 0;
-        z-index: -1;
-        pointer-events: none;
-      }
-      .navbar {
-        position: fixed;
-        top: 10vh;
-        left: 0;
-        width: 100%;
-        background: transparent;
-        display: flex;
-        justify-content: center;
-        z-index: 10;
-        padding: 10px 0;
-      }
-      .nav-btn {
-        color: #fff;
-        text-decoration: none;
-        margin: 0 30px;
-        font-size: 1em;
-        padding: 8px 16px;
-        border-radius: 4px;
-        transition: background 0.2s;
-      }
-      .nav-btn:hover {
-        background: rgba(255,255,255,0.2);
-      }
-      .content {
-        position: relative;
-        z-index: 1;
-        color: white;
-        font-size: 2em;
-        padding: 50px;
-      }
-    </style>
+    
   </head>
   <body style="margin: 0; overflow: hidden;">
-    <nav class="navbar">
-      <a href="index.html" class="nav-btn">主页</a>
-      <a href="research.html" class="nav-btn">研究</a>
-      <a href="blog.html" class="nav-btn">博客</a>
-      <a href="contact.html" class="nav-btn">联系</a>
-
-    </nav>
+    <script src="navbar.js"></script>
     <div class="content">
-      我的其他内容
+      <h1>Welcome to my personal website!</h1>
+      <p>My name is Pengcheng Zhang. I am currently a PhD student in Wuppertal Topology group under the supervision of Prof. Jens Hornbostel(Wuppertal) and Prof. Markus Reineke(Bochum)</p>
     </div>
   </body>
 </html>
